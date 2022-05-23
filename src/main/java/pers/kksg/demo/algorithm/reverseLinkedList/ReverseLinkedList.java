@@ -1,4 +1,4 @@
-package pers.kksg.demo.algorithm;
+package pers.kksg.demo.algorithm.reverseLinkedList;
 
 /**
  * Created with IntelliJ IDEA.
