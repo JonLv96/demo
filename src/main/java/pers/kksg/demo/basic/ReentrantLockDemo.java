@@ -1,8 +1,19 @@
 package pers.kksg.demo.basic;
 
+import cn.hutool.core.date.DatePattern;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.CollectionUtils;
+import pers.kksg.demo.entity.OrderPO;
+import pers.kksg.demo.utils.DesensitizedUtil;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.stream.IntStream;
 
 /**
  * ReentrantLockDemo
@@ -18,7 +29,6 @@ public class ReentrantLockDemo {
     public void doSomething(int n) {
         try {
             //进入递归第一件事：加锁
-            lock.lock();
             log.info("--------lock()执行后，getState()的值：{} lock.isLocked():{}", lock.getHoldCount(), lock.isLocked());
             log.info("--------递归{}次--------", n);
             if (n <= 2) {
@@ -33,8 +43,7 @@ public class ReentrantLockDemo {
     }
 
     public static void main(String[] args) {
-        ReentrantLockDemo reentrantLockDemo = new ReentrantLockDemo();
-        reentrantLockDemo.doSomething(1);
-        log.info("执行完doSomething方法 是否还持有锁：{}", lock.isLocked());
+        System.out.println(CollectionUtils.containsInstance(Arrays.asList(0, 1, 2, 3), 7));
+
     }
 }
