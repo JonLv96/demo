@@ -1,9 +1,12 @@
 package pers.kksg.demo;
+import com.alibaba.fastjson.JSONObject;
 
 import cn.hutool.core.date.StopWatch;
 import com.alibaba.fastjson.JSON;
+import org.apache.commons.compress.utils.Lists;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import pers.kksg.demo.entity.OrderDTO;
 import pers.kksg.demo.entity.OrderPO;
 
 import java.math.BigDecimal;
@@ -93,5 +96,24 @@ class Tests {
             String next = iterator.next();
             System.out.println(next);
         }
+    }
+
+    @Test
+    public void test34() {
+        List<OrderDTO> orderDTOS = new ArrayList<>();
+        IntStream.range(0,10).forEach(i ->{
+            OrderDTO orderDTO = new OrderDTO();
+            orderDTO.setId(i);
+            orderDTO.setOrderNumber("i" + i);
+            orderDTO.setProId(Lists.newArrayList());
+            orderDTOS.add(orderDTO);
+        });
+        String jsonStr = JSONObject.toJSONString(orderDTOS);
+        System.out.println(jsonStr);
+        List<OrderDTO> collect = orderDTOS.stream().filter(dto -> Objects.equals(dto.getId(), 2)).collect(Collectors.toList());
+        String collectStr = JSONObject.toJSONString(collect);
+        System.out.println(jsonStr);
+        System.out.println(collectStr);
+
     }
 }
