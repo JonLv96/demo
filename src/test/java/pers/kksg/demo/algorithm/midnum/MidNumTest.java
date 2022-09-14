@@ -9,8 +9,10 @@ class MidNumTest {
     @Test
     void findMedianSortedArrays() {
         MidNum midNum = new MidNum();
-        int[] arr1 = {2,2,4,4};
-        int[] arr2 = {2,2,4,4};
+        int[] arr1 = {1,2};
+        int[] arr2 = {3,4};
+//        midNum.findMedianSortedArraysTest(arr1,arr2);
+//        midNum.findMedianSortedArrays2(arr1,arr2);
         midNum.findMedianSortedArrays(arr1,arr2);
 
     }
