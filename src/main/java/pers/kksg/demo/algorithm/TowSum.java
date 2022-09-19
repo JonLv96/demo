@@ -1,4 +1,4 @@
-package pers.kksg.demo.algorithm.twoSum;
+package pers.kksg.demo.algorithm;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -56,7 +56,7 @@ import java.util.Map;
  * @Description 两数之和
  * @Date 2022/5/18 18:07
  */
-public class Solution {
+public class TowSum {
     //暴力枚举
     public int[] twoSum1(int[] nums, int target) {
         int[] result = new int[2];

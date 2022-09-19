@@ -1,4 +1,4 @@
-package pers.kksg.demo.algorithm.midnum;
+package pers.kksg.demo.algorithm;
 
 /**
  * MidNum

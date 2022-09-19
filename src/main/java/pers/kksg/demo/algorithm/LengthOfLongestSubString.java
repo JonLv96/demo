@@ -1,4 +1,4 @@
-package pers.kksg.demo.algorithm.longestSubStr;
+package pers.kksg.demo.algorithm;
 
 import java.util.HashMap;
 import java.util.Map;
