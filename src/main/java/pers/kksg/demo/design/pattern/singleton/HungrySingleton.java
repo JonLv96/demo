@@ -9,7 +9,10 @@ package pers.kksg.demo.design.pattern.singleton;
  */
 public class HungrySingleton {
     private static HungrySingleton instance = new HungrySingleton();
-    private HungrySingleton (){}
+
+    private HungrySingleton() {
+    }
+
     public static HungrySingleton getInstance() {
         return instance;
     }
