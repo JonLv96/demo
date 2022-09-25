@@ -38,19 +38,28 @@ import java.util.regex.Pattern;
  * OK
  */
 public class ChechPassword {
+    private static Pattern upperCase = Pattern.compile("[A-Z]");
+    private static Pattern lowerCase = Pattern.compile("[a-z]");
+    private static Pattern numCase = Pattern.compile("[0-9]");
+    private static Pattern otherCase = Pattern.compile("[^0-9a-zA-Z]");
+
+
     public static void main(String[] arg) {
-        Scanner sc = new Scanner(System.in);
-        while (sc.hasNext()) {
-            String str = sc.next();
-            if (str.length() <= 8) {
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNext()) {
+            String password = scanner.next();
+            //长度超过八位
+            if (password.length() <= 8) {
                 System.out.println("NG");
                 continue;
             }
-            if (getMatch(str)) {
+            //包括大小写字母.数字.其它符号,以上四种至少三种
+            if (!isSafe(password)) {
                 System.out.println("NG");
                 continue;
             }
-            if (getString(str, 0, 3)) {
+            //不包含长度大于二的公共子串
+            if (containLongerThan2Str(password)) {
                 System.out.println("NG");
                 continue;
             }
@@ -58,41 +67,33 @@ public class ChechPassword {
         }
     }
 
-    // 校验是否有重复子串
-    private static boolean getString(String str, int l, int r) {
-        if (r >= str.length()) {
-            return false;
+    private static boolean containLongerThan2Str(String password) {
+        for (int i = 0; i < password.toCharArray().length -2; i++) {
+            if (password.substring(i+1).contains(password.substring(i, i + 3))) {
+                return true;
+            }
         }
-        if (str.substring(r).contains(str.substring(l, r))) {
-            return true;
-        } else {
-            return getString(str, l + 1, r + 1);
-        }
+        return false;
     }
 
-    // 检查是否满足正则
-    private static boolean getMatch(String str) {
+    private static boolean isSafe(String password) {
         int count = 0;
-        Pattern p1 = Pattern.compile("[A-Z]");
-        if (p1.matcher(str).find()) {
+        if (upperCase.matcher(password).find()) {
             count++;
         }
-        Pattern p2 = Pattern.compile("[a-z]");
-        if (p2.matcher(str).find()) {
+        if (lowerCase.matcher(password).find()) {
             count++;
         }
-        Pattern p3 = Pattern.compile("[0-9]");
-        if (p3.matcher(str).find()) {
+        if (numCase.matcher(password).find()) {
             count++;
         }
-        Pattern p4 = Pattern.compile("[^a-zA-Z0-9]");
-        if (p4.matcher(str).find()) {
+        if (otherCase.matcher(password).find()) {
             count++;
         }
         if (count >= 3) {
-            return false;
-        } else {
             return true;
         }
+        return false;
     }
+
 }
