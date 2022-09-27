@@ -2,6 +2,7 @@ package pers.kksg.demo.algorithm;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 //给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target 的那 两个 整数，并返回它们的数组下标。
 //
@@ -57,6 +58,41 @@ import java.util.Map;
  * @Date 2022/5/18 18:07
  */
 public class TowSum {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int arrLen =  in.nextInt();
+        int arr[] = new int[arrLen];
+        for (int i = 0; i < arrLen; i++) {
+            arr[i] = in.nextInt();
+        }
+        int sort =  in.nextInt();
+        for (int i =  0; i < arrLen - 1; i++) {
+            for (int j = i + 1; j < arrLen; j++) {
+                if (sort == 0) {
+                    if (arr[i] > arr[j]) {
+                        int temp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = temp;
+                    }
+                } else {
+                    if (arr[i] < arr[j]) {
+                        int temp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = temp;
+                    }
+                }
+            }
+
+        }
+        StringBuffer sb =  new StringBuffer();
+        for(int k = 0;k<arrLen;k++){
+            sb.append(arr[k]).append(" ");
+        }
+        System.out.println(sb.substring(0,sb.length()-1));
+
+    }
+
+
     //暴力枚举
     public int[] twoSum1(int[] nums, int target) {
         int[] result = new int[2];
