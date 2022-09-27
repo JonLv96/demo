@@ -37,7 +37,7 @@ import java.util.regex.Pattern;
  * NG
  * OK
  */
-public class ChechPassword {
+public class CheckPassword {
     private static Pattern upperCase = Pattern.compile("[A-Z]");
     private static Pattern lowerCase = Pattern.compile("[a-z]");
     private static Pattern numCase = Pattern.compile("[0-9]");
