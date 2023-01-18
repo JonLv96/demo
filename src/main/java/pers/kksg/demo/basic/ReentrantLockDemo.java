@@ -42,7 +42,6 @@ public class ReentrantLockDemo {
             lock.unlock();
             log.info("--------unlock()执行后，getState()的值：{} lock.isLocked():{}", lock.getHoldCount(), lock.isLocked());
         }
-        CsvUtil
     }
 
     public static void main(String[] args) {
