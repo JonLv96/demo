@@ -1,117 +1,94 @@
-package pers.kksg.demo.algorithm.sort;
-
-/**
- * Created with IntelliJ IDEA.
- *
- * @Author: lvqiang
- * @Date: 2022/09/17/23:38
- * @Description:
- */
-public class Test {
-    public static int[] arr = {33, 5, 7, 19, 3, 99, 13, 64, 35};
-
-    public static void main(String[] args) {
-        printArr(arr);
-        quickSort();
-        printArr(arr);
-    }
-
-
-    public static void bubbleSort() {
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length - i - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    swap(j, j + 1);
-                }
-            }
-        }
-    }
-
-    public static void selectionSort() {
-        for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[i] > arr[j]) {
-                    swap(i, j);
-                }
-
-            }
-        }
-    }
-
-    public static void insertSort() {
-        for (int i = 1; i < arr.length; i++) {
-            int tempIndex = i - 1;
-            int tempValue = arr[i];
-            while (tempIndex >= 0) {
-                if (tempValue > arr[tempIndex]) {
-                    break;
-                }
-                arr[tempIndex + 1] = arr[tempIndex--];
-            }
-            arr[tempIndex + 1] = tempValue;
-        }
-    }
-
-    public static void quickSort() {
-        quickRecursion(0, arr.length - 1);
-    }
-
-    public static void quickRecursion(int startIndex, int endIndex) {
-        if (endIndex <= startIndex + 1) {
-            return;
-        }
-        //假设区间值为第一个值
-        int partitionValue = arr[startIndex];
-        int tempIndex = startIndex;
-        for (int i = startIndex + 1; i <= endIndex; i++) {
-            if (arr[i] < partitionValue) {
-                tempIndex++;
-                if (i > tempIndex) {
-                    swap(i, tempIndex);
-                }
-            }
-        }
-        swap(tempIndex, startIndex);
-        //进行区间两边 数组递归排序
-        if (tempIndex > startIndex + 1) {
-            quickRecursion(startIndex, tempIndex - 1);
-        }
-        if (endIndex - 1 > tempIndex) {
-            quickRecursion(tempIndex + 1, endIndex);
-        }
-
-    }
-
-    public static void shellSort() {
-        for (int i = arr.length / 2; i <= 1; i /= 2) {
-            for (int j = 0; j < i; j++) {
-
-                
-
-            }
-
-        }
-    }
-
-
-    public static void swap(int index1, int index2) {
-        int temp = arr[index1];
-        arr[index1] = arr[index2];
-        arr[index2] = temp;
-    }
-
-    public static void printArr(int[] arr) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("[");
-        for (int i = 0; i < arr.length; i++) {
-            builder.append(arr[i]);
-            if (i == arr.length - 1) {
-                break;
-            }
-            builder.append(",");
-        }
-        builder.append("]");
-        System.out.println(builder);
-    }
-
-}
+//package pers.kksg.demo.algorithm.sort;
+//
+//import java.util.HashMap;
+//import java.util.Map;
+//
+///**
+// * Created with IntelliJ IDEA.
+// *
+// * @Author: lvqiang
+// * @Date: 2022/09/17/23:38
+// * @Description:
+// */
+//public class Test {
+//    public static void main(String[] args) {
+//        Map<String, Integer> ascToNumMap = new HashMap<>();
+//        Map<Integer, String> numToAscMap = new HashMap<>();
+//
+//        // 数字 0-9
+//        for (int i = 0; i <= 9; i++) {
+//            ascToNumMap.put(String.valueOf(i), 48 + i);
+//            numToAscMap.put(48 + i, String.valueOf(i));
+//        }
+//
+//        // 大写字母 A-J
+//        for (char c = 'A'; c <= 'Z'; c++) {
+//            ascToNumMap.put(String.valueOf(c), (int) c);
+//            numToAscMap.put((int) c, String.valueOf(c));
+//        }
+//
+//        // 小写字母 a-j
+//        for (char c = 'a'; c <= 'z'; c++) {
+//            ascToNumMap.put(String.valueOf(c), (int) c);
+//            numToAscMap.put((int) c, String.valueOf(c));
+//        }
+//
+//        // 创建Scanner对象读取输入
+//        Scanner scanner = new Scanner(System.in);
+//        String input = scanner.nextLine(); // 读取一行输入字符串
+////        scanner.close(); // 关闭Scanner（可选，但推荐）
+//        char[] ascArr = input.toCharArray();
+//        int[] numArr = transferAscToNum(ascArr, ascToNumMap);
+//        int[] sortedNumArr = sortArr(numArr);
+//        String sortedAscStr = transferNumToAsc(sortedNumArr, numToAscMap);
+//
+//        // 输出结果字符串
+//        System.out.println(sortedAscStr);
+//    }
+//
+//    /**
+//     * 数组排序
+//     */
+//    public static int[] sortArr(int[] arr) {
+//        for (int i = 0; i < arr.length - 1; i++) {
+//            for (int j = i + 1; j < arr.length; j++) {
+//                if (arr[i] > arr[j]) {
+//                    int temp = arr[i];
+//                    arr[i] = arr[j];
+//                    arr[j] = temp;
+//                }
+//            }
+//        }
+//        return arr;
+//    }
+//
+//
+//    /**
+//     * 将 char 转为对应的 asc值
+//     */
+//    public static int[] transferAscToNum(char[] chars, Map<String, Integer> ascToNumMap) {
+//        int[] res = new int[chars.length];
+//
+//        for (int i = 0; i < chars.length; i++) {
+//            res[i] = ascToNumMap.get(String.valueOf(chars[i]));
+//        }
+//        return res;
+//    }
+//
+//    /**
+//     * 将 char 转为对应的 asc值
+//     */
+//    public static String transferNumToAsc(int[] arrs,
+//                                          Map<Integer, String> numToAscMap) {
+//
+//        StringBuffer sb = new StringBuffer();
+//        for (int i = 0; i < arrs.length; i++) {
+//            sb.append(numToAscMap.get(arrs[i]));
+//
+//        }
+//        return sb.toString();
+//    }
+//
+//
+//
+//}
