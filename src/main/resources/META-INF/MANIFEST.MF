@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Premain-Class: pers.kksg.demo.classloader.HotSwapAgent
+Agent-Class: pers.kksg.demo.classloader.HotSwapAgent
+Can-Redefine-Classes: true
+Can-Retransform-Classes: true
